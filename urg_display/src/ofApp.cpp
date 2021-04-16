@@ -2,7 +2,7 @@
 
 // by default, this app assumes linear data
 // to use spherical data, uncomment this line:
-//#define spherical
+#define spherical
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -29,7 +29,8 @@ void ofApp::setup(){
     
 #else
     
-    urg.loadSphericalData("spherical_test.csv");
+//    urg.loadSphericalData("spherical_test.csv");
+    urg.loadSphericalData("studio_test.csv");
     urg.fillSphericalMesh(225./64., 180, 0, 1, 0, 682, true, 265, 3, ofColor(255), true);
     panel.add(urg.sphericalParams);
     

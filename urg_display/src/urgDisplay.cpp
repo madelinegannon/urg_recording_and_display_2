@@ -186,7 +186,7 @@ void urgDisplay::drawLinearMesh() {
 void urgDisplay::loadSphericalData(string fileName) {
     
     ofFile file(fileName);
-    
+    this->filename = fileName;
     sphericalBuffer = ofBuffer(file);
 }
 
@@ -236,7 +236,7 @@ void urgDisplay::fillSphericalMesh(float speed, float period, float startingPeri
     while (it != end) {
         
         string line = *it;
-        if (line.empty() == true) continue;
+        if (line.empty() == true) { ++it; continue;}
         vector<string> items = ofSplitString(line, ",");
         
         // find current time
@@ -289,6 +289,7 @@ void urgDisplay::fillSphericalMesh(float speed, float period, float startingPeri
         nSphericalScans++;
         ++it;
     }
+    export_pointcloud(this->filename, sphericalMesh);
 }
 
 // ---------------------------------------------------------------------
